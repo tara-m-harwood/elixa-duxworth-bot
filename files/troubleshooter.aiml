@@ -68,6 +68,11 @@
     </template>
 </category>
 
+<category>
+    <pattern># YES THAT HELPED #</pattern>
+    <that>SHARP HELPFUL</that>
+    <template><image>https://media.tenor.com/images/656e7d1b91f42be5bcd0e14d6da9919d/tenor.gif</image></template>
+</category>
     
 	
 </aiml>
