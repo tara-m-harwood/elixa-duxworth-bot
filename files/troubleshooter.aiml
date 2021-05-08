@@ -14,85 +14,60 @@
 
 <category>
     <pattern># I NEED HELP WITH MY CODE #</pattern>
-    <template> 
-        <think><set name="topic">troubleshoot_what</set></think>
-        <srai>START TROUBLESHOOTER</srai>
-    </template>
-</category>
-	
-<category>
-    <pattern>START TROUBLESHOOTER</pattern>
-    <template>
-        <think>
-            <set name="question1">What do you want your code to do?</set>
-            <set name="question2">What is your code doing now?</set>
-            <set name="question3">What have you tried?</set>
-            <set name="responses">Responses: </set>
-            <set name="qnum">1</set>
-        </think>
-        <srai>TROUBLESHOOTER LOOP</srai>
-    </template>
+    <template>What do you want your code to do?</template>
 </category>
 
 <category>
-    <pattern>TROUBLESHOOTER LOOP</pattern>
+    <pattern># CODE DOES NOT WORK #</pattern>
     <template>
-        <think>
-            <set name="question">
-                <get>
-                    <name>question<get name="qnum"/></name>
-                </get>
-            </set>
-        </think>
-        <condition name="question">
-            <li value="unknown">
-                <srai>END TROUBLESHOOTER</srai>
-            </li>
-            <li>
-                <think>
-                    <set name="topic">TROUBLESHOOTER</set>
-                </think>
-                <get name="question"/>
-            </li>
-        </condition>
+        <image>https://i.imgflip.com/589rnj.jpg</image>
     </template>
 </category>
-
-<topic name="TROUBLESHOOTER">
     
-    <category>
-        <pattern>_</pattern>
-        <template>
-            <think>
-                
-                <set name="topic"/>
-                    <set name="response">
-                        <get name="responses"/>
-                        ---
-                        <star/>
-                </set>
-                
-                <set name="qnum">
-                    <map name="successor">
-                        <get name="qnum"/>
-                    </map>
-                </set>
-                
-            </think>
-            <srai>TROUBLESHOOTER LOOP</srai>
-        </template>
-    </category>
-
-</topic>
-
+<category>
+    <pattern># CODE IS NOT WORKING #</pattern>
+    <template>
+        <srai>CODE DOES NOT WORK</srai>
+    </template>
+</category>
+    
+<category>
+    <pattern># I WANT MY CODE TO WORK #</pattern>
+    <template>
+        <srai>CODE DOES NOT WORK</srai>
+    </template>
+</category>
 
 <category>
-    <pattern>END TROUBLESHOOTER</pattern>
+    <pattern>_</pattern>
+    <that># WHAT DO YOU WANT YOUR CODE TO DO #</that>
     <template>
-        OK, let me see if I have this right:
-        You want your code to: <get name="responses"></get>
+        <think><set name="response_want"><input /></set></think>
+        Got it!  So what is it doing now?
     </template>
-</category>	
+</category>
+
+<category>
+    <pattern>_</pattern>
+    <that># SO WHAT IS IT DOING NOW #</that>
+    <template>
+        <think><set name="response_now"><input /></set></think>
+        Oh, I see how that could be a problem! What have you tried?
+    </template>
+</category>
+
+<category>
+    <pattern>_</pattern>
+    <that># WHAT HAVE YOU TRIED #</that>
+    <template>
+        <think><set name="response_tried"><input /></set></think>
+          You want: <get name="response_want"></get>.
+          But now: <get name="response_now"></get>. 
+          You tried: <get name="response_tried"></get>.
+          Has this troubleshooting exercise been helpful to you? #helpful
+    </template>
+</category>
+
     
 	
 </aiml>
