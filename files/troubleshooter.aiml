@@ -14,8 +14,13 @@
 
 <category>
     <pattern># I NEED HELP WITH MY CODE #</pattern>
-    <template>What do you want your code to do?</template>
+    <template>
+        What do you want your code to do?
+        <think><set name="topic">troubleshoot</set></think>
+    </template>
 </category>
+
+<topic name="troubleshoot">
 
 <category>
     <pattern># CODE DOES NOT WORK #</pattern>
@@ -63,16 +68,29 @@
         <think><set name="response_tried"><input /></set></think>
           You want: <get name="response_want"></get>.
           But now: <get name="response_now"></get>. 
-          You tried: <get name="response_tried"></get>.
-          Has this troubleshooting exercise been helpful to you? #helpful
+          You tried: <get name="response_tried"></get>.   
+        <srai>TROUBLESHOOTER END</srai>  
     </template>
 </category>
 
 <category>
-    <pattern># YES THAT HELPED #</pattern>
-    <that>SHARP HELPFUL</that>
+    <pattern>$TROUBLESHOOTER END</pattern>
+    <template>  Has this exercise been helpful?</template>
+</category>
+
+<category>
+    <pattern>$YES</pattern>
+    <that># HAS THIS EXERCISE BEEN HELPFUL</that>
     <template><image>https://media.tenor.com/images/656e7d1b91f42be5bcd0e14d6da9919d/tenor.gif</image></template>
 </category>
+
+<category>
+    <pattern>_</pattern>
+    <that># HAS THIS EXERCISE BEEN HELPFUL</that>
+    <template>Lets keep chatting!</template>
+</category>
+
+</topic>
     
 	
 </aiml>
