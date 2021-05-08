@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+	<!-- insert your AIML categories here -->
+	
+<category>
+    <pattern># I JUST WANT TO CHAT #</pattern>
+    <template><srai>LET US CHAT</srai></template>
+</category>
+
+<category>
+    <pattern># START HELPING #</pattern>
+    <template>Happy to help!</template>
+</category>
+
+<category>
+    <pattern># I NEED HELP WITH MY CODE #</pattern>
+    <template> 
+        <think><set name="topic">troubleshoot_what</set></think>
+        <srai>START TROUBLESHOOTER</srai>
+    </template>
+</category>
+	
+<category>
+    <pattern>START TROUBLESHOOTER</pattern>
+    <template>
+        <think>
+            <set name="question1">What do you want your code to do?</set>
+            <set name="question2">What is your code doing now?</set>
+            <set name="question3">What have you tried?</set>
+            <set name="responses">Responses: </set>
+            <set name="qnum">1</set>
+        </think>
+        <srai>TROUBLESHOOTER LOOP</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>TROUBLESHOOTER LOOP</pattern>
+    <template>
+        <think>
+            <set name="question">
+                <get>
+                    <name>question<get name="qnum"/></name>
+                </get>
+            </set>
+        </think>
+        <condition name="question">
+            <li value="unknown">
+                <srai>END TROUBLESHOOTER</srai>
+            </li>
+            <li>
+                <think>
+                    <set name="topic">TROUBLESHOOTER</set>
+                </think>
+                <get name="question"/>
+            </li>
+        </condition>
+    </template>
+</category>
+
+<topic name="TROUBLESHOOTER">
+    
+    <category>
+        <pattern>_</pattern>
+        <template>
+            <think>
+                
+                <set name="topic"/>
+                    <set name="response">
+                        <get name="responses"/>
+                        ---
+                        <star/>
+                </set>
+                
+                <set name="qnum">
+                    <map name="successor">
+                        <get name="qnum"/>
+                    </map>
+                </set>
+                
+            </think>
+            <srai>TROUBLESHOOTER LOOP</srai>
+        </template>
+    </category>
+
+</topic>
+
+
+<category>
+    <pattern>END TROUBLESHOOTER</pattern>
+    <template>
+        OK, let me see if I have this right:
+        You want your code to: <get name="responses"></get>
+    </template>
+</category>	
+    
+	
+</aiml>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+	<!-- insert your AIML categories here -->
+	
+	 <category><pattern># CODE DOES NOT WORK #</pattern>
+        <template>
+            <image>https://i.imgflip.com/589rnj.jpg</image>
+            <think>START TROUBLESHOOTER</think>
+        </template>
+    </category>
+    
+    <category><pattern># CODE IS NOT WORKING #</pattern>
+        <template>
+            <srai>CODE DOES NOT WORK</srai>
+        </template>
+    </category>
+    
+    <category><pattern># I WANT MY CODE TO WORK #</pattern>
+        <template>
+            <srai>CODE DOES NOT WORK</srai>
+        </template>
+    </category>
+    
+    <category>
+	    <pattern># WHAT DO YOU WANT YOUR CODE TO DO #</pattern>
+	    <template>  What do you want your code to do?</template>
+    </category>
+    
+</aiml>

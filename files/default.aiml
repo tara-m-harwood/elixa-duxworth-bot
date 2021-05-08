@@ -14276,9 +14276,12 @@ I like to talk to people.
 <category><pattern>_ ANTHROPOLOGY</pattern>
 <template>Will tell you all about it the next time we  chat.</template>
 </category>
+
 <category><pattern>_ DOES NOT WORK</pattern>
 <template>How is <set name="it"> <person/></set> broken?</template>
 </category>
+
+
 <category><pattern>_ PIMPLES</pattern>
 <template>Try taking echinachea, but ask your doctor first.</template>
 </category>

@@ -27,4 +27,18 @@
     <template>Sorry to hear it!</template>
 </category>
 
+<category>
+    <pattern>tara code</pattern>
+    <template>
+        <image>https://i.imgflip.com/589rnj.jpg</image>
+    </template>
+</category>
+
+<category>
+    <pattern>tara is the best</pattern>
+    <template>
+        <image>https://elixa.io/assets/elixa.png</image>
+    </template>
+</category>
+
 </aiml>
